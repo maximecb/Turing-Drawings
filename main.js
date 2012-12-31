@@ -148,6 +148,11 @@ Time per update, in milliseconds
 const UPDATE_TIME = 40;
 
 /**
+Maximum iterations per update
+*/
+const UPDATE_ITRS = 350000;
+
+/**
 Update the rendering
 */
 function updateRender()
@@ -156,6 +161,7 @@ function updateRender()
     const height = canvas.height
 
     var startTime = (new Date()).getTime();
+    var startItrc = program.itrCount;
 
     // Until the update time is exhausted
     for (;;)
@@ -164,7 +170,10 @@ function updateRender()
         program.update(5000);
 
         var curTime = (new Date()).getTime();
-        if (curTime - startTime >= UPDATE_TIME)
+        var curItrc = program.itrCount;
+
+        if (curItrc - startItrc >= UPDATE_ITRS ||
+            curTime - startTime >= UPDATE_TIME)
             break;
     }
 
