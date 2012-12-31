@@ -39,7 +39,7 @@
             </td>
 
             <!-- controls column -->
-            <td style="vertical-align: text-top;">
+            <td style="text-align:center; vertical-align: text-top;">
                 <form name="params" action="">
 
                     <div style="margin-top:8px; margin-bottom:8px;">
@@ -49,12 +49,26 @@
                         <input id="numSymbols" type="text" size="3" value="3">
                     </div>
 
-                    <div style="text-align:center; margin:8px;">
+                    <div style="margin-top:8px; margin-bottom:8px;">
                         <button type="button" onclick="randomProg();">Random</button>
                         <button type="button" onclick="restartProg();">Restart</button>
                     </div>
 
-                    <div style="margin-top:40px;">
+                    <div style="margin-top:16px; margin-bottom:16px; width:400px; text-align: justify;">
+                    Turing Drawings uses randomly generated Turing machines to produce
+                    drawings on a canvas, as a form of generative art. The typical
+                    Turing machine formulation manipulates symbols on a one-dimensional
+                    tape. Turing Drawings uses machines that operate on a finite 2D grid,
+                    where each grid cell can contain one symbol which corresponds to a
+                    color value. This 2D grid is represented in the canvas shown at the left,
+                    which is dynamically updated as the Turing machine iterates.
+                    <br><br>
+                    You can generate new drawings by pressing the "Random" button above. If
+                    you find a drawing you like, and would like to share it online, you can
+                    do so by copying the custom URL shown in the text area below.
+                    </div>
+
+                    <div style="margin-top:8px; margin-bottom:8px;">
                         <div>
                         Shareable URL for this drawing:
                         </div>
