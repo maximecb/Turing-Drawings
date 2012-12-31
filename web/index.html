@@ -1,0 +1,79 @@
+<html>
+    <head>
+
+        <title>Turing Drawings</title>
+        <meta name="keywords" content="javascript, google chrome, cpu, performance, html5, genetic algorithm">
+        <meta name="description" content="">
+        <script language="javascript" src="utils-html.js"></script>
+        <script language="javascript" src="utils-misc.js"></script>
+        <script language="javascript" src="main.js"></script>
+        <script language="javascript" src="programs.js"></script>        
+
+        <link rel=stylesheet href="stylesheet.css" type="text/css">
+
+    </head>
+    <body>
+
+        <a href="https://github.com/you">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="forkme.png" alt="Fork me on GitHub">
+        </a>
+
+        <div class="title">
+        Turing Drawings
+        </div>
+
+        <div align="center">
+        <table>
+        <tr>
+            <!-- canvas column -->
+            <td>
+                <div class="canvas_frame" style="width:512px; height:512px;">
+                    <canvas id="canvas">
+                        Your browser does not support the canvas element.
+                    </canvas>
+                </div>
+            </td>
+        
+            <!-- spacer column -->
+            <td width="10">
+            </td>
+
+            <!-- controls column -->
+            <td style="vertical-align: text-top;">
+                <form name="params" action="">
+
+                    <div style="margin-top:8px; margin-bottom:8px;">
+                        Num states:
+                        <input id="numStates" type="text" size="3" value="4">
+                        Num symbols:
+                        <input id="numSymbols" type="text" size="3" value="3">
+                    </div>
+
+                    <div style="text-align:center; margin:8px;">
+                        <button type="button" onclick="randomProg();">Random</button>
+                        <button type="button" onclick="restartProg();">Restart</button>
+                    </div>
+
+                    <div style="margin-top:40px;">
+                        <div>
+                        Shareable URL for this drawing:
+                        </div>
+                        <div>
+                        <input id="shareURL" type="text" size="42" value="" disabled>
+                        </div>
+                    </div>
+
+                </form>
+            </td>
+
+        </tr>
+        </table>
+        </div>
+
+        <div class="copyright">
+        Copyright &copy; 2012 Maxime Chevalier-Boisvert
+        </div>
+
+    </body>
+</html>
+

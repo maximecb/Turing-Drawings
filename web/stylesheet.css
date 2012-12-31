@@ -1,0 +1,98 @@
+body
+{
+    background: #000000;
+
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+}
+
+div.title
+{
+    margin-top: 12px;
+    margin-bottom: 12px;
+
+    text-align:center;
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+a
+{
+    color: rgb(160,160,160);
+    font-family: "Arial", sans-serif;
+}
+a:link {text-decoration: none; }
+a:visited {text-decoration: none; }
+a:active {text-decoration: none; }
+a:hover {text-decoration: underline; }
+
+div.faq_link
+{
+    margin-top: -5px;
+    margin-bottom: 12px;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+div.canvas_frame
+{
+    border: 2px solid rgb(255,255,255);
+
+    text-align: center;
+    vertical-align: middle;
+}
+
+div.text_frame
+{
+    border: 2px solid rgb(255,255,255);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    vertical-align: text-top; 
+    text-align: left;
+    color: white;
+    font-family: "Courier", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+div.faq_q
+{
+    margin-top: 12px;
+    margin-bottom: 10px;
+
+    text-align:left;
+    color: red;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+div.ad
+{
+    width:100%;
+    margin-top: 12px; 
+    margin-bottom: 12px;
+
+    text-align:center; 
+}
+
+div.copyright
+{
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    text-align:center;
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+}
+
