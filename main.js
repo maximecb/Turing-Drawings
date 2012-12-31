@@ -104,6 +104,9 @@ function randomProg()
     var url = location.protocol + '//' + location.host + location.pathname;
     var shareURL = url + '#' + str;
     document.getElementById("shareURL").value = shareURL;
+
+    // Clear the current hash tag to avoid confusion
+    location.hash = '';
 }
 
 /**
