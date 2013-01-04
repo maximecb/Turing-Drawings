@@ -145,21 +145,18 @@ var colorMap = [
 /***
 Time per update, in milliseconds
 */
-const UPDATE_TIME = 40;
+var UPDATE_TIME = 40;
 
 /**
 Maximum iterations per update
 */
-const UPDATE_ITRS = 350000;
+var UPDATE_ITRS = 350000;
 
 /**
 Update the rendering
 */
 function updateRender()
 {
-    const width = canvas.width;
-    const height = canvas.height
-
     var startTime = (new Date()).getTime();
     var startItrc = program.itrCount;
 
