@@ -142,9 +142,8 @@ function restartProg()
     if(UPDATE_ITRS == NaN || UPDATE_ITRS < 1)
         UPDATE_ITRS = 350000;
 
-
-
-    clearInterval(updateInterv);
+    if(updateIterv)
+        clearInterval(updateInterv);
     updateInterv = setInterval(
         updateRender,
         UPDATE_TIME
