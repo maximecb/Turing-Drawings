@@ -82,6 +82,25 @@ function init()
 window.addEventListener("load", init, false);
 
 /**
+Pause the program
+*/
+function pauseProg()
+{
+    if(updateInterv)
+    {
+        clearInterval(updateInterv);
+        updateInterv = false;
+    }
+    else
+    {
+        updateInterv = setInterval(
+            updateRender,
+            UPDATE_TIME
+        );
+    }
+}
+
+/**
 Generate a new random program
 */
 function randomProg()
@@ -161,17 +180,11 @@ function updateRender()
     var startItrc = program.itrCount;
 
     // Until the update time is exhausted
-    for (;;)
+    while (program.itrCount - startItrc < UPDATE_ITRS &&
+            (new Date()).getTime() - startTime < UPDATE_TIME)
     {
         // Update the program
         program.update(5000);
-
-        var curTime = (new Date()).getTime();
-        var curItrc = program.itrCount;
-
-        if (curItrc - startItrc >= UPDATE_ITRS ||
-            curTime - startTime >= UPDATE_TIME)
-            break;
     }
 
     /*
