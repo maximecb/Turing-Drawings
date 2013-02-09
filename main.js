@@ -166,14 +166,14 @@ console.info = console.info || function(){};
 Map of symbols (numbers) to colors
 */
 var colorMap = [
-    255,0  ,0  ,    // Initial symbol color
+    255,0  ,0  ,    // Initial symbol color / Red
     0  ,0  ,0  ,    // Black
     255,255,255,    // White
     0  ,255,0  ,    // Green
-    0, ,0, ,255,    // Blue
-    255,255,0  ,
-    0  ,255,255,
-    255,0  ,255,
+    0  ,0  ,255,    // Blue
+    255,255,0  ,    // Yellow
+    0  ,255,255,    // Cyan
+    255,0  ,255    // Purple
 ];
 
 /***
