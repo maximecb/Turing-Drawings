@@ -200,7 +200,7 @@ function updateRender()
             (new Date()).getTime() - startTime < UPDATE_TIME)
     {
         // Update the program
-        program.update(5000);
+        program.update((UPDATE_ITERS - (program.itrCount - startItrc) > 5000)?5000:UPDATE_ITERS);
     }
 
     /*
