@@ -133,6 +133,22 @@ Reset the program state
 */
 function restartProg()
 {
+    UPDATE_TIME = parseInt(document.getElementById("updateInterval").value);
+    UPDATE_ITRS = parseInt(document.getElementById("updateIters").value);
+
+    if(UPDATE_TIME == NaN || UPDATE_TIME < 1)
+        UPDATE_TIME = 40;
+
+    if(UPDATE_ITRS == NaN || UPDATE_ITRS < 1)
+        UPDATE_ITRS = 350000;
+
+
+
+    clearInterval(updateInterv);
+    updateInterv = setInterval(
+        updateRender,
+        UPDATE_TIME
+    );
     program.reset();
 }
 
