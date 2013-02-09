@@ -109,8 +109,8 @@ function randomProg()
     var numSymbols = parseInt(document.getElementById("numSymbols").value);
 
     assert (
-        numSymbols <= colorMap.length,
-        colorMap.length + ' states currently supported'
+        numSymbols <= colorMap.length / 3,
+        colorMap.length / 3 + ' states currently supported'
     );
 
     console.log('num states: ' + numStates);
