@@ -110,7 +110,7 @@ function randomProg()
 
     assert (
         numSymbols <= colorMap.length / 3,
-        colorMap.length / 3 + ' states currently supported'
+        colorMap.length / 3 + ' symbols currently supported'
     );
 
     console.log('num states: ' + numStates);
@@ -199,7 +199,7 @@ function updateRender()
             (new Date()).getTime() - startTime < UPDATE_TIME)
     {
         // Update the program
-        program.update((UPDATE_ITERS - (program.itrCount - startItrc) > 5000)?5000:UPDATE_ITERS - (program.itrCount - startItrc));
+        program.update((UPDATE_ITRS - (program.itrCount - startItrc) > 5000)?5000:(UPDATE_ITRS - (program.itrCount - startItrc)));
     }
 
     /*
