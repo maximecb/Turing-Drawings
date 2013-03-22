@@ -161,71 +161,62 @@ Program.fromString = function (str, mapWidth, mapHeight)
 
 Program.prototype.update = function (numItrs)
 {
-    for (var i = 0; i < numItrs; ++i)
-    {
-        var sy = this.map[this.mapWidth * this.yPos + this.xPos];
-        var st = this.state;
-
-        var idx = (this.numStates * sy + st) * 3;
-        var st = this.table[idx + 0];
-        var sy = this.table[idx + 1];
-        var ac = this.table[idx + 2];
-
-        // Update the current state
-        this.state = st;
-
-        // Write the new symbol
-        this.map[this.mapWidth * this.yPos + this.xPos] = sy;
-
-        // Perform the transition action
-        switch (ac)
-        {
-            case ACTION_LEFT:
-            this.xPos += 1;
-            if (this.xPos >= this.mapWidth)
-                this.xPos -= this.mapWidth;
-            break;
-
-            case ACTION_RIGHT:
-            this.xPos -= 1;
-            if (this.xPos < 0)
-                this.xPos += this.mapWidth;
-            break;
-
-            case ACTION_UP:
-            this.yPos -= 1;
-            if (this.yPos < 0)
-                this.yPos += this.mapHeight;
-            break;
-
-            case ACTION_DOWN:
-            this.yPos += 1;
-            if (this.yPos >= this.mapHeight)
-                this.yPos -= this.mapHeight;
-            break;
-
-            default:
-            error('invalid action: ' + ac);
-        }
-
-        /*
-        assert (
-            this.xPos >= 0 && this.xPos < this.mapWidth,
-            'invalid x position'
-        );
-
-        assert (
-            this.yPos >= 0 && this.yPos < this.mapHeight,
-            'invalid y position'
-        );
-
-        assert (
-            this.state >= 0 && this.state < this.numStates,
-            'invalid state'
-        );
-        */
-
-        this.itrCount++;
-    }
+    // N.B. If you ever mutate this.table, then also delete
+    // this.update so it'll get regenerated here.
+    this.update = eval(generate(this));
+    return this.update(numItrs);
 }
 
+function generate(program)
+{
+    var mapWidth  = program.mapWidth;
+    var mapHeight = program.mapHeight;
+    var numStates = program.numStates;
+    var table     = program.table;
+
+    var code = "";
+    code += "(function(numItrs) {\n";
+    code += "    var map = this.map;\n";
+    code += "    var state = this.state;\n";
+    code += "    var xPos = this.xPos;\n";
+    code += "    var yPos = this.yPos;\n";
+    code += "    for (var i = numItrs; 0 < i; --i) {\n";
+    code += "        var oldPos = "+mapWidth+" * yPos + xPos;\n";
+    code += "        switch ("+numStates+" * map[oldPos] + state) {\n";
+    for (var symbol = 0; symbol < program.numSymbols; ++symbol)
+    {
+        for (var state = 0; state < numStates; ++state)
+        {
+            var idx = numStates * symbol + state;
+            code += "        case "+idx+":\n";
+            code += "            state = "+table[3*idx+0]+";\n";
+            code += "            map[oldPos] = "+table[3*idx+1]+";\n";
+            switch (table[3*idx+2])
+            {
+            case ACTION_LEFT:
+                code += "            xPos += 1; if (xPos >= "+mapWidth+") xPos -= "+mapWidth+";\n";
+                break;
+            case ACTION_RIGHT:
+                code += "            xPos -= 1; if (xPos < 0) xPos += "+mapWidth+";\n";
+                break;
+            case ACTION_UP:
+                code += "            yPos -= 1; if (yPos < 0) yPos += "+mapHeight+";\n";
+                break;
+            case ACTION_DOWN:
+                code += "            yPos += 1; if (yPos >= "+mapHeight+") yPos -= "+mapHeight+";\n";
+                break;
+            default:
+                error('invalid action');
+            }
+            code += "            break;\n";
+        }
+    }
+    code += "        }\n";
+    code += "    }\n";
+    code += "    this.state = state;\n";
+    code += "    this.xPos = xPos;\n";
+    code += "    this.yPos = yPos;\n";
+    code += "    this.itrCount += numItrs;\n";
+    code += "})";
+    return code;
+}
