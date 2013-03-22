@@ -161,8 +161,8 @@ Program.fromString = function (str, mapWidth, mapHeight)
 
 Program.prototype.update = function (numItrs)
 {
-    // N.B. If you ever mutate this.table, then also delete
-    // this.update so it'll get regenerated here.
+    // N.B. If you ever mutate this.table, mapWidth, mapHeight, then
+    // also delete this.update so it'll get regenerated here.
     this.update = eval(generate(this));
     return this.update(numItrs);
 }
