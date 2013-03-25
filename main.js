@@ -82,6 +82,25 @@ function init()
 window.addEventListener("load", init, false);
 
 /**
+Pause the program
+*/
+function pauseProg()
+{
+    if(updateInterv)
+    {
+        clearInterval(updateInterv);
+        updateInterv = false;
+    }
+    else
+    {
+        updateInterv = setInterval(
+            updateRender,
+            UPDATE_TIME
+        );
+    }
+}
+
+/**
 Generate a new random program
 */
 function randomProg()
@@ -90,8 +109,8 @@ function randomProg()
     var numSymbols = parseInt(document.getElementById("numSymbols").value);
 
     assert (
-        numSymbols <= colorMap.length,
-        colorMap.length + ' states currently supported'
+        numSymbols <= colorMap.length / 3,
+        colorMap.length / 3 + ' symbols currently supported'
     );
 
     console.log('num states: ' + numStates);
@@ -114,6 +133,21 @@ Reset the program state
 */
 function restartProg()
 {
+    UPDATE_TIME = parseInt(document.getElementById("updateInterval").value);
+    UPDATE_ITRS = parseInt(document.getElementById("updateIters").value);
+
+    if(UPDATE_TIME == NaN || UPDATE_TIME < 1)
+        UPDATE_TIME = 40;
+
+    if(UPDATE_ITRS == NaN || UPDATE_ITRS < 1)
+        UPDATE_ITRS = 350000;
+
+    if(updateIterv)
+        clearInterval(updateInterv);
+    updateInterv = setInterval(
+        updateRender,
+        UPDATE_TIME
+    );
     program.reset();
 }
 
@@ -132,14 +166,14 @@ console.info = console.info || function(){};
 Map of symbols (numbers) to colors
 */
 var colorMap = [
-    255,0  ,0  ,    // Initial symbol color
+    255,0  ,0  ,    // Initial symbol color / Red
     0  ,0  ,0  ,    // Black
     255,255,255,    // White
     0  ,255,0  ,    // Green
-    0, ,0, ,255,    // Blue
-    255,255,0  ,
-    0  ,255,255,
-    255,0  ,255,
+    0  ,0  ,255,    // Blue
+    255,255,0  ,    // Yellow
+    0  ,255,255,    // Cyan
+    255,0  ,255    // Purple
 ];
 
 /***
@@ -161,17 +195,11 @@ function updateRender()
     var startItrc = program.itrCount;
 
     // Until the update time is exhausted
-    for (;;)
+    while (program.itrCount - startItrc < UPDATE_ITRS &&
+            (new Date()).getTime() - startTime < UPDATE_TIME)
     {
         // Update the program
-        program.update(5000);
-
-        var curTime = (new Date()).getTime();
-        var curItrc = program.itrCount;
-
-        if (curItrc - startItrc >= UPDATE_ITRS ||
-            curTime - startTime >= UPDATE_TIME)
-            break;
+        program.update((UPDATE_ITRS - (program.itrCount - startItrc) > 5000)?5000:(UPDATE_ITRS - (program.itrCount - startItrc)));
     }
 
     /*
