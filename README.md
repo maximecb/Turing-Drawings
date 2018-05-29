@@ -26,3 +26,5 @@ Below is a sample of the kinds of patterns Turing Drawings can generate:
 * [Pangaea](http://maximecb.github.io/Turing-Drawings/#6,3,0,1,3,1,1,2,1,2,1,2,2,0,3,1,3,4,1,2,2,1,0,3,1,2,1,2,3,4,1,0,5,1,1,2,1,3,2,2,0,2,1,0,4,2,2,4,2,1,0,2,0,1,1,0)
 * [Shooting Stars](http://maximecb.github.io/Turing-Drawings/#6,4,4,2,2,4,3,3,2,2,3,1,2,2,0,2,0,3,1,3,4,1,2,2,1,0,3,3,1,2,2,0,3,1,0,4,1,3,4,1,1,0,1,3,0,1,0,5,2,2,5,1,0,2,1,0,4,3,3,3,1,1,1,2,3,5,3,1,4,1,2,4,1,1)
 * [Holes](http://maximecb.github.io/Turing-Drawings/#3,3,2,2,1,0,1,2,0,2,3,2,2,0,0,1,1,0,2,1,1,1,3,1,2,0,2,2,3)
+
+I've also written a [blog post](https://pointersgonewild.com/2012/12/31/turing-drawings/) briefly describing this project.
