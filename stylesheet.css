@@ -7,7 +7,7 @@ body
     font-weight: normal;
 }
 
-div.title
+h1.title
 {
     margin-top: 12px;
     margin-bottom: 12px;
@@ -28,6 +28,11 @@ a:link {text-decoration: none; }
 a:visited {text-decoration: none; }
 a:active {text-decoration: none; }
 a:hover {text-decoration: underline; }
+
+input[type="number"]
+{
+    width: 4em;
+}
 
 div.faq_link
 {
